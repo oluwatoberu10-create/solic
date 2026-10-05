@@ -24,7 +24,7 @@ export default function Home() {
       <TrustIntro />
       <AboutToby />
       <Credentials />
-      <Services />
+      <Services limit={6} />
       <Pricing />
       <Process />
       <WhyToby />

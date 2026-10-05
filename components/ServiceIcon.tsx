@@ -1,13 +1,32 @@
-import { Users, Home, Globe2, BriefcaseBusiness, Building2, ScrollText } from "lucide-react";
+import {
+  Building2,
+  ClipboardCheck,
+  FilePen,
+  Globe2,
+  BriefcaseBusiness,
+  Handshake,
+  HeartPulse,
+  Home,
+  Landmark,
+  ScrollText,
+  ShieldAlert,
+  Users,
+} from "lucide-react";
 import type { ServiceIcon as IconName } from "@/lib/services";
 
 const icons = {
-  family: Users,
+  corporate: Building2,
+  contracts: FilePen,
+  disputes: Handshake,
   property: Home,
-  immigration: Globe2,
-  employment: BriefcaseBusiness,
-  business: Building2,
   wills: ScrollText,
+  criminal: ShieldAlert,
+  employment: BriefcaseBusiness,
+  family: Users,
+  immigration: Globe2,
+  public: Landmark,
+  injury: HeartPulse,
+  regulatory: ClipboardCheck,
 } satisfies Record<IconName, unknown>;
 
 export function ServiceIcon({ name, className = "size-5" }: { name: IconName; className?: string }) {

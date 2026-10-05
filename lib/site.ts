@@ -45,7 +45,7 @@ export const site = {
       "Admitted to the Roll of Solicitors",
     ] as string[],
     regulation: "SRA No: 833553" as string | null,
-    practiceAreas: null as string | null,
+    practiceAreas: "12 areas of law, from commercial and property to family, crime and immigration" as string | null,
   },
 
   regulatory: {
@@ -59,7 +59,7 @@ export const site = {
    * (and edit `lib/services.ts` to match). While `false`, the site states that
    * practice areas are to be confirmed so visitors aren't misled.
    */
-  practiceAreasConfirmed: false,
+  practiceAreasConfirmed: true,
 
   /** Set to `true` once real fees are entered in `lib/packages.ts`. */
   pricesConfirmed: true,

@@ -1,4 +1,5 @@
-import { Check, GraduationCap, Landmark, MapPin, Scale, type LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check, GraduationCap, Landmark, MapPin, Scale, type LucideIcon } from "lucide-react";
 import { site } from "@/lib/site";
 import { Container, Editable, SectionHeading } from "./ui/primitives";
 import { Reveal } from "./ui/Reveal";
@@ -8,12 +9,13 @@ type CredentialCardProps = {
   title: string;
   value: string | null;
   placeholder: string;
+  link?: { href: string; label: string };
 };
 
 const cardBase =
   "flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-colors duration-500 hover:border-gold-soft/30 hover:bg-white/[0.05]";
 
-export function CredentialCard({ icon: Icon, title, value, placeholder }: CredentialCardProps) {
+export function CredentialCard({ icon: Icon, title, value, placeholder, link }: CredentialCardProps) {
   return (
     <div className={cardBase}>
       <Icon className="size-6 text-gold-soft" aria-hidden strokeWidth={1.5} />
@@ -21,6 +23,12 @@ export function CredentialCard({ icon: Icon, title, value, placeholder }: Creden
       <p className="mt-3 text-[17px] font-medium leading-snug text-white">
         <Editable value={value} label={placeholder} tone="light" />
       </p>
+      {link && (
+        <Link href={link.href} className="group mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-soft">
+          <span className="link-underline">{link.label}</span>
+          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
+        </Link>
+      )}
     </div>
   );
 }
@@ -64,6 +72,7 @@ export function Credentials() {
       title: "Practice Areas",
       value: site.credentials.practiceAreas,
       placeholder: "Add Confirmed Practice Areas",
+      link: { href: "/services", label: "View all practice areas" },
     },
   ];
 

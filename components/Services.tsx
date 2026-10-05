@@ -39,7 +39,8 @@ export function PracticeAreasNotice() {
   );
 }
 
-export function Services({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" }) {
+export function Services({ headingLevel = "h2", limit }: { headingLevel?: "h1" | "h2"; limit?: number }) {
+  const shown = limit ? services.slice(0, limit) : services;
   return (
     <section aria-labelledby="services-title" className="bg-paper py-24 sm:py-32">
       <Container>
@@ -61,7 +62,7 @@ export function Services({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" }
         </div>
 
         <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, i) => (
+          {shown.map((s, i) => (
             <li key={s.slug}>
               <Reveal delay={(i % 3) * 80} className="h-full">
                 <ServiceCard service={s} index={i} />
@@ -70,9 +71,19 @@ export function Services({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" }
           ))}
         </ul>
 
-        <Reveal className="mt-8">
-          <PracticeAreasNotice />
-        </Reveal>
+        {limit && services.length > limit && (
+          <Reveal className="mt-10 flex justify-center">
+            <Button href="/services" variant="secondary" arrow>
+              View all {services.length} practice areas
+            </Button>
+          </Reveal>
+        )}
+
+        {!site.practiceAreasConfirmed && (
+          <Reveal className="mt-8">
+            <PracticeAreasNotice />
+          </Reveal>
+        )}
       </Container>
     </section>
   );
