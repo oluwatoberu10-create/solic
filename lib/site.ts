@@ -34,13 +34,22 @@ export const site = {
   bookingUrl: null as string | null,
 
   credentials: {
-    qualification: null as string | null,
-    regulation: null as string | null,
+    /** Shown as a list in the Professional Background section. Use an empty array to show the placeholder. */
+    qualifications: [
+      "Law Degree",
+      "SQE1 – passed",
+      "SQE2 – passed",
+      "2 years' qualifying work experience",
+      "SRA character & suitability met",
+      "English/Welsh language requirement met",
+      "Admission to the Roll of Solicitors – applied",
+    ] as string[],
+    regulation: "SRA No: 833553" as string | null,
     practiceAreas: null as string | null,
   },
 
   regulatory: {
-    sraNumber: null as string | null,
+    sraNumber: "833553" as string | null,
     information: null as string | null,
     indemnity: null as string | null,
   },

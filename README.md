@@ -12,7 +12,7 @@ npm run build && npm start
 
 | File | What it controls |
 | --- | --- |
-| `lib/site.ts` | Portrait, phone, email, address, booking URL, qualification, SRA number, regulatory & indemnity info, `practiceAreasConfirmed`, `pricesConfirmed` |
+| `lib/site.ts` | Portrait, email, booking URL, qualifications list, SRA number, regulatory & indemnity info, `practiceAreasConfirmed`, `pricesConfirmed` |
 | `lib/packages.ts` | The three consultation packages and their prices |
 | `lib/services.ts` | Practice areas — add/remove/edit; detail pages, sitemap and form dropdown update automatically |
 | `lib/insights.ts` | Articles; swap `getInsights` / `getInsight` for CMS fetches later |
