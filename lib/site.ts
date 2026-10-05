@@ -42,7 +42,7 @@ export const site = {
       "2 years' qualifying work experience",
       "SRA character & suitability met",
       "English/Welsh language requirement met",
-      "Admission to the Roll of Solicitors – applied",
+      "Admitted to the Roll of Solicitors",
     ] as string[],
     regulation: "SRA No: 833553" as string | null,
     practiceAreas: null as string | null,
