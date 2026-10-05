@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0e1a2b;
+  --color-navy-deep: #09121f;
+  --color-navy-soft: #172739;
+  --color-charcoal: #25282e;
+  --color-ivory: #f6f2eb;
+  --color-paper: #fbf9f5;
+  --color-stone: #e5dfd3;
+  --color-stone-dark: #cfc6b5;
+  --color-ink: #141a24;
+  --color-muted: #5b6270;
+  --color-gold: #a9844f;
+  --color-gold-soft: #d3b98c;
+  --color-burgundy: #6b2834;
+  --color-forest: #1e3a31;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), "Times New Roman", ui-serif, Georgia, serif;
+
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: rgb(169 132 79 / 0.3);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+/* ---------- Typography helpers ---------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.04;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ---------- Surfaces ---------- */
+.hairline-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+.paper-texture {
+  background-color: var(--color-ivory);
+  background-image: radial-gradient(80% 60% at 100% 0%, rgb(169 132 79 / 0.07), transparent 70%);
+}
+.featured-package {
+  background:
+    linear-gradient(var(--color-navy), var(--color-navy)) padding-box,
+    linear-gradient(160deg, rgb(211 185 140 / 0.9), rgb(169 132 79 / 0.25) 45%, rgb(255 255 255 / 0.08) 85%) border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 50px 100px -45px rgb(9 18 31 / 0.7);
+}
+.portrait-placeholder {
+  background:
+    radial-gradient(70% 55% at 50% 35%, rgb(211 185 140 / 0.16), transparent 70%),
+    linear-gradient(170deg, #1b2c42, #0b1524);
+}
+
+/* ---------- Underline link ---------- */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-out-soft);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* ---------- Motion ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 1s var(--ease-out-soft) both;
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.slow-zoom {
+  animation: slow-zoom 14s var(--ease-out-soft) both;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.9s var(--ease-out-soft),
+    transform 0.9s var(--ease-out-soft);
+}
+.reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.rule-grow {
+  transform-origin: left;
+  animation: rule-grow 1.2s 0.4s var(--ease-out-soft) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .slow-zoom,
+  .rule-grow {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Cormorant defaults to old-style figures; use lining numerals for 01/02, prices etc. */
+.display,
+.font-display {
+  font-variant-numeric: lining-nums;
+}
